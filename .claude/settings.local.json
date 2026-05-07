@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python \"C:\\\\Users\\\\mahaa\\\\OneDrive\\\\Escritorio\\\\Andrea\\\\PEC\\\\pec-web\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"playful educational vocational orientation youth mexico\" --design-system -p \"PEC Orientacion\")",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)"
+    ]
+  }
+}
