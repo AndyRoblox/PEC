@@ -139,7 +139,15 @@ export function GraficosTab() {
 
               {/* YouTube iframe — src to be filled in later */}
               <div className="flex-1 rounded-xl overflow-hidden bg-black/20 min-h-0">
-                <iframe width="1079" height="607" src="https://www.youtube.com/embed/CiYk_G4tEmQ" title="Consumo de drogas experimentales en adolescentes disminuye en México: ENCODAT 2025 I Informe Capital" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/CiYk_G4tEmQ"
+                  title="Consumo de drogas experimentales en adolescentes disminuye en México: ENCODAT 2025 I Informe Capital"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
               </div>
             </div>
           )}
