@@ -9,7 +9,7 @@ export function JuegoTab() {
       <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white">
         {/* Django game iframe — src to be configured */}
         <iframe
-          src="https://pecandres.vercel.app/juego/"
+          src="https://pecandres-zdxa.vercel.app/juego/"
           title="Juego PEC"
           className="w-full h-[600px] block"
           allowFullScreen
