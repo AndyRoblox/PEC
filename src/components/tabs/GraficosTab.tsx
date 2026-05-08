@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { BarChart } from '../charts/BarChart'
+import { PieChart } from '../charts/PieChart'
+import { FrequencyPolygon } from '../charts/Histogram'
 
 /* ── Local stat card ─────────────────────────────────────────── */
 function StatCard({
@@ -31,19 +33,35 @@ function StatCard({
 
 /* ── Placeholder data ────────────────────────────────────────── */
 const AREAS_DATA = [
-  { label: 'Ciencias',    value: 87, color: '#477a72' },
-  { label: 'Tecnología',  value: 65, color: '#ffd06d' },
-  { label: 'Arte',        value: 82, color: '#477a72' },
-  { label: 'Negocios',    value: 55, color: '#ffd06d' },
-  { label: 'Salud',       value: 45, color: '#fa7995' },
+  { label: 'Adicción',    value: 40, color: '#477a72' },
+  { label: 'Violencia',  value: 30, color: '#ffd06d' },
+  { label: 'Problemas familiares',        value: 20, color: '#477a72' },
+  { label: 'Problemas escolares/laborales',    value: 15, color: '#ffd06d' },
+  { label: 'Daños a la salud mental',       value: 25, color: '#fa7995' },
+  { label: 'Sobredosis',       value: 10, color: '#477a72' },
 ]
 
-const PROGRESS_DATA = [
-  { label: 'Ene', value: 70, color: '#477a72' },
-  { label: 'Feb', value: 45, color: '#477a72' },
-  { label: 'Mar', value: 85, color: '#477a72' },
-  { label: 'Abr', value: 55, color: '#ffd06d' },
-  { label: 'May', value: 35, color: '#fa7995' },
+const SUBSTANCE_DATA = [
+  { label: 'Alcohol', value: 100, color: '#477a72' },
+  { label: 'Tabaco', value: 75, color: '#477a72' },
+  { label: 'Marihuana', value: 60, color: '#477a72' },
+  { label: 'Inhalantes', value: 40, color: '#ffd06d' },
+  { label: 'Metanfetaminas', value: 30, color: '#fa7995' },
+  { label: 'Cocaína', value: 20, color: '#a78bfa' },
+]
+
+const PIE_DATA = [
+  { label: '12-14 Años',          value: 20, color: '#477a72' },
+  { label: '15-17 Años',         value: 45, color: '#ffd06d' },
+  { label: '18-25 Años', value: 25, color: '#fa7995' },
+  { label: '26+ Años',             value: 10, color: '#a78bfa' },
+]
+
+const POLYGON_LABELS = ['2026', '2027', '2028', '2029', '2030', '2031']
+const POLYGON_SERIES = [
+  { name: 'Alcohol', color: '#477a72', values: [20, 19.5, 19, 18.5, 18.2, 18] },
+  { name: 'Cannabis', color: '#fa7995', values: [13.3, 14, 14.8, 15.5, 16, 16.6] },
+  { name: 'Sintéticos', color: '#ffd06d', values: [1.5, 2.5, 3.5, 4.5, 5.5, 6] },
 ]
 
 /* ── Tab component ───────────────────────────────────────────── */
@@ -56,7 +74,7 @@ export function GraficosTab() {
       <div className="mb-5">
         <h2 className="font-heading text-primary-dark text-xl font-medium">Resultados</h2>
         <p className="text-sm text-gray-400 mt-1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          Estadísticas clave sobre el consumo de drogas en adolescentes, con un video explicativo.
         </p>
       </div>
 
@@ -76,24 +94,38 @@ export function GraficosTab() {
           ].join(' ')}
         >
           {/* Stat cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <StatCard label="Lorem ipsum dolor sit" value="87%" hexColor="#477a72" progress={87} />
-            <StatCard label="Lorem ipsum dolor sit" value="12"  hexColor="#ffd06d" progress={60} />
-            <StatCard label="Lorem ipsum dolor sit" value="4.2" hexColor="#fa7995" progress={42} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <StatCard label="Porcentaje de consumo en menores (a la BAJA)" value="4.1%" hexColor="#477a72" progress={4.1} />
+            <StatCard label="Porcentaje de consumo en adultos (a la ALTA)" value="14.6%" hexColor="#fa7995" progress={14.6} />
           </div>
 
           {/* Chart cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <BarChart
               data={AREAS_DATA}
-              title="Áreas de interés"
-              subtitle="Distribución de resultados del test vocacional"
+              title="Problemáticas sociales"
+              subtitle="Problemáticas sociales asociadas al consumo de drogas"
               className="min-h-[220px]"
             />
+            <PieChart
+              data={PIE_DATA}
+              title="Edad de inicio del consumo"
+              subtitle="Proporción por rango de edad al iniciar consumo de drogas"
+              className="min-h-[220px]"
+            />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <BarChart
-              data={PROGRESS_DATA}
-              title="Progreso mensual"
-              subtitle="Actividad de exploración por mes"
+              data={SUBSTANCE_DATA}
+              title="Sustancias más consumidas"
+              subtitle="Sustancias más consumidas por adolescentes"
+              className="min-h-[220px]"
+            />
+            <FrequencyPolygon
+              labels={POLYGON_LABELS}
+              series={POLYGON_SERIES}
+              title="Proyección de consumo futuro"
+              subtitle="Pronóstico por sustancia a 5 años"
               className="min-h-[220px]"
             />
           </div>

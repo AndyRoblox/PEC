@@ -1,4 +1,3 @@
-const NAV_ITEMS = ['Inicio', 'Carreras', 'Test', 'Recursos']
 
 export function Navbar() {
   return (
@@ -9,15 +8,6 @@ export function Navbar() {
         <span className="text-white/60 text-sm hidden sm:block">Orientación Vocacional</span>
       </div>
       <div className="hidden md:flex items-center gap-6">
-        {NAV_ITEMS.map((item) => (
-          <a
-            key={item}
-            href="#"
-            className="text-white/60 text-sm hover:text-white transition-colors duration-200 cursor-pointer"
-          >
-            {item}
-          </a>
-        ))}
       </div>
     </nav>
   )
