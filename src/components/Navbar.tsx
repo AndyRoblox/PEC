@@ -5,7 +5,7 @@ export function Navbar() {
       <div className="flex items-center gap-2">
         <img src="logo.png" alt="Logo PEC" className="w-6 h-6 object-contain" />
         <span className="text-white font-heading font-semibold text-sm tracking-wide">PEC</span>
-        <span className="text-white/60 text-sm hidden sm:block">Orientación Vocacional</span>
+        <span className="text-white/60 text-sm hidden sm:block">Contra las drogas</span>
       </div>
       <div className="hidden md:flex items-center gap-6">
       </div>
