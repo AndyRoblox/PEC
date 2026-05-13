@@ -35,7 +35,7 @@ export function Hero({ onVerMas, onExplorarGraficos }: HeroProps) {
 
       {/* Illustration placeholder */}
       <div className="absolute right-10 top-1/2 -translate-y-1/2 w-44 h-40  rounded-xl hidden md:flex flex-col items-center justify-center gap-2">
-        <img src="logo.png" alt="Ilustración cecytem" className="w-24 h-24 object-contain" />
+        <img src="logo.png" alt="Ilustración cecytem" className="w-36 h-36 object-contain" />
         
       </div>
     </section>

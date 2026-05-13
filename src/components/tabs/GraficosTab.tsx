@@ -90,18 +90,61 @@ export function GraficosTab() {
       </div>
 
       {/*
-        Desktop layout: charts on the left, expanding video panel on the right.
+        Desktop layout: top expanding video panel, charts below.
         Mobile layout: charts full-width; video lives in the fixed bottom sheet.
       */}
-      <div className="relative" style={{ minHeight: '520px' }}>
+      <div className="flex flex-col gap-4">
+
+        {/* ── Desktop: top expanding panel ─────────────────────── */}
+        <div
+          className="hidden md:flex flex-col bg-primary rounded-xl overflow-hidden
+                     transition-all duration-500 ease-in-out"
+          style={{ height: videoOpen ? '480px' : '3.5rem' }}
+        >
+          {/* Button bar — always visible at the top */}
+          <button
+            onClick={() => setVideoOpen(v => !v)}
+            className="flex items-center justify-center gap-2 h-14 w-full flex-shrink-0 cursor-pointer
+                       focus-visible:outline-2 focus-visible:outline-white/60 group"
+            aria-label={videoOpen ? 'Cerrar video' : 'Ver video'}
+          >
+            {!videoOpen && (
+              <svg className="w-4 h-4 text-white/80" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            )}
+            <span className="text-white text-sm font-heading font-semibold tracking-wide
+                             opacity-80 group-hover:opacity-100 transition-opacity">
+              {videoOpen ? 'Cerrar video' : 'Ver video'}
+            </span>
+            <svg
+              className={`w-4 h-4 text-white/80 transition-transform duration-300 ${videoOpen ? 'rotate-180' : ''}`}
+              fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          {/* Video content area */}
+          {videoOpen && (
+            <div key="video-desktop" className="flex-1 px-5 pb-5 min-h-0 animate-fade-in-up">
+              <div className="rounded-2xl overflow-hidden bg-black/20 h-full">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/CiYk_G4tEmQ"
+                  title="Consumo de drogas experimentales en adolescentes"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* Charts area */}
-        <div
-          className={[
-            'md:pr-14 flex flex-col gap-4 transition-opacity duration-300',
-            videoOpen ? 'md:opacity-0 md:pointer-events-none' : 'opacity-100',
-          ].join(' ')}
-        >
+        <div className="flex flex-col gap-4">
           {/* Stat cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <StatCard label="Porcentaje de consumo en menores (a la BAJA)" value="4.1%" hexColor="#477a72" progress={4.1} />
@@ -138,56 +181,6 @@ export function GraficosTab() {
               className="min-h-[220px]"
             />
           </div>
-        </div>
-
-        {/* ── Desktop: right-side expanding panel ──────────────── */}
-        <div
-          className="hidden md:flex absolute right-0 top-0 bottom-0 bg-primary rounded-xl z-10 overflow-hidden
-                     transition-all duration-500 ease-in-out flex-col"
-          style={{ width: videoOpen ? '100%' : '3.5rem' }}
-        >
-          {!videoOpen ? (
-            <button
-              onClick={() => setVideoOpen(true)}
-              className="w-full h-full flex items-center justify-center cursor-pointer group"
-              aria-label="Ver video"
-            >
-              <span
-                className="text-white text-xs font-heading font-semibold tracking-[0.15em] uppercase
-                           opacity-80 group-hover:opacity-100 transition-opacity
-                           [writing-mode:vertical-rl] rotate-180"
-              >
-                Ver video
-              </span>
-            </button>
-          ) : (
-            <div key="video-desktop" className="flex flex-col h-full p-5 animate-fade-in-up">
-              <div className="flex items-center justify-between mb-4 flex-shrink-0">
-                <h3 className="text-white font-heading font-semibold text-lg">Video explicativo</h3>
-                <button
-                  onClick={() => setVideoOpen(false)}
-                  className="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center
-                             text-white/70 hover:text-white transition-colors cursor-pointer"
-                  aria-label="Cerrar video"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-              <div className="flex-1 rounded-xl overflow-hidden bg-black/20 min-h-0">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/CiYk_G4tEmQ"
-                  title="Consumo de drogas experimentales en adolescentes"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          )}
         </div>
       </div>
 
