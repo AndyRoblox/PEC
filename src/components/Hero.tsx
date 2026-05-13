@@ -5,7 +5,7 @@ interface HeroProps {
 
 export function Hero({ onVerMas, onExplorarGraficos }: HeroProps) {
   return (
-    <section className="bg-crema relative overflow-hidden px-10 py-14">
+    <section className="bg-crema relative overflow-hidden px-10 py-20">
       {/* Decorative blobs */}
       <div className="absolute -top-8 -right-8 w-40 h-40 rounded-full bg-dorado opacity-35 pointer-events-none" />
       <div className="absolute -bottom-10 -left-5 w-[120px] h-[120px] rounded-full bg-primary opacity-15 pointer-events-none" />
@@ -34,8 +34,8 @@ export function Hero({ onVerMas, onExplorarGraficos }: HeroProps) {
       </div>
 
       {/* Illustration placeholder */}
-      <div className="absolute right-10 top-1/2 -translate-y-1/2 w-44 h-40  rounded-xl hidden md:flex flex-col items-center justify-center gap-2">
-        <img src="logo.png" alt="Ilustración cecytem" className="w-36 h-36 object-contain" />
+      <div className="absolute right-10 top-1/2 -translate-y-1/2 w-64 h-64 rounded-xl hidden md:flex flex-col items-center justify-center gap-2">
+        <img src="logo.png" alt="Ilustración cecytem" className="w-56 h-56 object-contain" />
         
       </div>
     </section>
